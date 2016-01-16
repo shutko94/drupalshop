@@ -1,3 +1,28 @@
+<!-- #header-menu -->
+<div id="header-menu">
+    <!-- #header-menu-inside -->
+    <div id="header-menu-inside" class="container_12 clearfix">
+    
+        <div class="grid_12">
+            <div id="navigation" class="clearfix">
+            <?php if ($page['navigation']) :?>
+            <?php print drupal_render($page['navigation']); ?>
+            <?php else :
+            if (module_exists('i18n_menu')) {
+            $main_menu_tree = i18n_menu_translated_tree(variable_get('menu_main_links_source', 'main-menu'));
+            } else {
+            $main_menu_tree = menu_tree(variable_get('menu_main_links_source', 'main-menu')); 
+            }
+            print drupal_render($main_menu_tree);
+            endif; ?>
+            </div>
+        </div>
+        
+    </div><!-- EOF: #header-menu-inside -->
+
+</div><!-- EOF: #header-menu -->
+
+
 <!-- #header -->
 <div id="header">
 	<!-- #header-inside -->
@@ -6,7 +31,7 @@
         <div id="header-inside-left" class="grid_8">
             
             <?php if ($logo): ?>
-            <a href="<?php print check_url($front_page); ?>" title="<?php print t('Home'); ?>"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
+            <a href="<?php print check_url($front_page); ?>" title="<?php print t('Home'); ?>"><h1>BOOKS</h1></a>
             <?php endif; ?>
      
             <?php if ($site_name || $site_slogan): ?>
@@ -32,30 +57,6 @@
     </div><!-- EOF: #header-inside -->
 
 </div><!-- EOF: #header -->
-
-<!-- #header-menu -->
-<div id="header-menu">
-	<!-- #header-menu-inside -->
-    <div id="header-menu-inside" class="container_12 clearfix">
-    
-    	<div class="grid_12">
-            <div id="navigation" class="clearfix">
-            <?php if ($page['navigation']) :?>
-            <?php print drupal_render($page['navigation']); ?>
-            <?php else :
-            if (module_exists('i18n_menu')) {
-            $main_menu_tree = i18n_menu_translated_tree(variable_get('menu_main_links_source', 'main-menu'));
-            } else {
-            $main_menu_tree = menu_tree(variable_get('menu_main_links_source', 'main-menu')); 
-            }
-            print drupal_render($main_menu_tree);
-            endif; ?>
-            </div>
-        </div>
-        
-    </div><!-- EOF: #header-menu-inside -->
-
-</div><!-- EOF: #header-menu -->
 
 <!-- #banner -->
 <div id="banner">
